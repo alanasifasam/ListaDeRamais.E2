@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ListaDeRamais.E2.Models.Ramais>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="container Cards">
+    <div class="card-body mb-lg-5 p-lg-5" id="card-body">
+        <p>
+            <a asp-action="CriarRamais">Criar novo Ramal</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NumeroRamal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Senha)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.HostIp)
+                    </th>
+                    <th>
+                        <p>Departamento</p>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumeroRamal)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Senha)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HostIp)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodigoDepFkNavigation.Nome)
+                        </td>
+                        <td>
+                            <a asp-action="AtualizarRamais" asp-route-id="@item.CodigoRamalId">Atualizar</a> |
+                            <a asp-action="ExcluirRamais" asp-route-id="@item.CodigoRamalId">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>
+</div>

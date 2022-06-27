@@ -1,0 +1,65 @@
+﻿@model ListaDeRamais.E2.Models.DepartamentoRamaisFormViewModel;
+
+@{
+    ViewData["Title"] = "AtualizarRamais";
+}
+
+
+
+<div class="container Cards">
+    <div class="card-body mb-lg-5 p-lg-5" id="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="AtualizarRamais">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <input asp-for="CodigoRamalId" type="hidden" class="form-control" />
+                        <span asp-validation-for="CodigoRamalId"  class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NumeroRamal" class="control-label"></label>
+                        <input asp-for="NumeroRamal" class="form-control" />
+                        <span asp-validation-for="NumeroRamal" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Senha" class="control-label"></label>
+                        <input asp-for="Senha" class="form-control" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="HostIp" class="control-label"></label>
+                        <input asp-for="HostIp" class="form-control" />
+                        <span asp-validation-for="HostIp" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="CodigoDepFk" class="control-label">Departamentos</label>
+
+                        <select asp-for="CodigoDepFk" name="CodigoDepFk" value="CodigoDepFk"
+                                asp-items="@(new SelectList(Model.CodigoDepFkNavigation,"CodigoDepId","Nome"))"
+                                class="form-control">
+                            Departamento
+                        </select>
+
+                    </div>
+                    <div>
+                        <input asp-for="CodigoDepFk" value="CodigoDepFk" name="CodigoDepFk" type='hidden' class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Voltar para a lista</a>
+        </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
+</div>
+</div>

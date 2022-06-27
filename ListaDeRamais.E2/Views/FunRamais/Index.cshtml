@@ -1,0 +1,89 @@
+﻿@model IEnumerable<ListaDeRamais.E2.Models.FunRamais>
+
+@{
+    ViewData["Title"] = "FunRamais";
+}
+
+
+
+
+<div class="container Cards">
+    <div class="card-body mb-lg-5 p-lg-5" id="card-body">
+        <p>
+            <a asp-action="CriarVinculoRamais">
+                <i class='bx bx-loader-circle bx-rotate-180' style='color:#153f6c'></i>
+                Atribuir Ramal
+            </a>
+        </p>
+        <div class="container d-inline-flex w-50 p-3">
+            <div class="container-xxl mb-xl-auto " id="card-box-pesquisar">
+
+                <div class="card border rounded ">
+                <div class="card-header text-black mb-xl-auto">Pesquisar </div>
+
+                <form asp-controller="FunRamais" asp-action="Index" method="post">
+                    <input class="form-control " name="txtProcurar" /><button type="submit" class="btn btn-outline-">Buscar</button>
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Numero Ramal </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="table-info">
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <th scope="row">#</th>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodigoFunFkNavigation.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodigoRamalFkNavigation.NumeroRamal)
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+
+
+
+
+                <div>
+                    <ul class="pagination pagination-sm">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&laquo;</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+        
+    </div>
+    </div>

@@ -1,0 +1,297 @@
+﻿. {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+#card-body {
+    right: 300px;
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+    box-shadow: 0 0 1em #808080;
+}
+
+.Cards {
+    top: 10px;
+    left: 69px; /*69px;sidebar desativado */
+    right: 100px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    
+
+
+}
+
+.main {
+    left: 66px;
+    right: 300px;
+    width: 99%;
+}
+   
+
+body {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.cor-bg {
+    background-color: #11101d;
+}
+
+
+
+.sidebar {
+    position: fixed;
+    width: 78px;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: #11101d;
+    padding: 6px 14px;
+    transition: all 0.5s ease; /*efeito de ir para lateral*/
+}
+
+
+
+.sidebar .logoContent .logo {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        color: floralwhite;
+        opacity:0;
+        pointer-events:auto;
+}
+
+.sidebar .links_name{
+        opacity: 0;
+        
+}
+
+.sidebar .logoContent .logo i {
+    font-size: 30px;
+    margin-right: 5px;
+ }
+
+.sidebar .logoContent .logo .logoName{
+    font-size:20px;
+    font-weight:400;
+
+}
+
+    .sidebar .bx-menu {
+        position: absolute;
+        top: 6px;
+        left: 0px;
+        transform: translateX(50%);
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 30px;
+        cursor: pointer;
+        color: floralwhite;
+    }
+
+    .sidebar ul {
+        margin-top: 20px;
+        padding-left: 0rem;
+    }
+
+.sidebar ul li {
+    position:relative;
+    width:100%;
+    height:50px;
+    line-height:50px;
+    margin: 0 5px;
+    list-style:none;
+}
+
+.sidebar ul li a{
+    font-size: medium;
+    display:flex;
+    align-items: center;
+    color:  floralwhite;
+    text-decoration:none;
+    border-radius:12px;
+    white-space:nowrap;
+    transition: all 0.5s ease;
+
+}
+
+
+sidebar ul li a:hover{
+    color:#11101d;
+    background-color:#fff;
+
+}
+
+.sidebar ul li i{
+    min-width:50px;
+    height:50px;
+    line-height:50px;
+    border-radius:12px;
+    text-align:center;
+
+}
+
+.sidebar .profileContent {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: floralwhite;
+}
+
+.sidebar .profileContent .profile{
+    position:relative;
+    height: 60px;
+    padding:10px 6px;
+    background-color:#1d1d31;
+}
+
+
+/*img*/
+    .sidebar .profileContent .profile .profileDetail {
+        display:flex;
+        align-items:center;
+        pointer-events:none;
+        white-space:nowrap;
+    }
+
+
+ .sidebar .profileContent .profile .profileDetail .img-logo {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+      background-color: #202047;
+      border-radius: 12px;
+  }
+
+ .sidebar .profileContent .profile .profileDetail .nome_job {
+  margin-left: 15px;
+}
+
+.profile .profileDetail .nome_job .name {
+    font-size:15px;
+    font-weight:400;
+}
+
+
+.homeContent {
+    position: absolute;
+    top: 0;
+    left: 66px;
+    width: calc(100% - 300px);
+    transition: all 0.5s ease;
+}
+
+.homeContent h2{
+    margin:10px;
+    font-size:20px;
+    font-weight:400;
+    color:floralwhite;
+
+}
+
+/*toolipe*/
+
+.toolipe{
+    position:absolute;
+    top:65px;
+    left:122px;
+    transform: translate(-50px,-50px);
+    height:35px;
+    background-color:floralwhite;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.500);
+    text-align:center;
+    color:#1d1d1d;
+    line-height:35px;
+    transition: 0;
+    opacity:0;
+   display:none;
+}
+
+.sidebar ul li:hover .toolipe{
+    transition:all 0.5s ease;
+    top:70%;
+    opacity:1;
+}
+
+/*sidebar active*/
+
+.sidebar.active {
+    width: 300px;
+}
+
+.homeContent.active {
+    left: 300px;
+}
+
+.main.active{
+    left:300px;
+}
+
+
+.sidebar.active .logoContent .logo{
+    opacity:1;
+}
+
+.sidebar.active .bx-menu{
+    left:220px;
+}
+
+.sidebar.active .links_name{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.container.Cards.active{/*quando ativo ajustar cards*/
+    left: 285px; 
+    right: 100px;
+    width: calc(100% - 66px);
+}
+
+.main.active {
+    left: 66px
+    rigth: 300px;
+    width: calc(100% - 300px); 
+   
+}
+
+.toolipe.active{
+    display:none;
+    opacity:0;
+}
+
+.btn_botoes {
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: rgb(0 0 0 / 63%);
+    border: none;
+    color: floralwhite;
+    padding: 05px 10px;
+    margin-right:5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.table {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}

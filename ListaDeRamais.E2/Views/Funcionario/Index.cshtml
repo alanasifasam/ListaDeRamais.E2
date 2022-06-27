@@ -1,0 +1,82 @@
+﻿@model IEnumerable<ListaDeRamais.E2.Models.Funcionario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+
+<div class="container Cards">
+    <div class="card-body mb-lg-5 p-lg-5" id="card-body">
+        <p>
+            <a asp-action="CriarFuncionario" type="button"  class="btn_botoes " >
+                Criar novo funcionario
+                
+            </a>
+        </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nome)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Sobrenome)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cargo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Telefones)
+                            </th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Sobrenome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cargo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @foreach (var telefone in item.Telefones)
+                                    {
+
+                                        @Html.DisplayFor(m => telefone.NumeroTelefone)
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var fun in item.FunRamais)
+                                    {
+
+                                        @Html.DisplayFor(m => fun.CodigoRamalFkNavigation.NumeroRamal)
+                                    }
+                                </td>
+
+                                <td>
+                                    <a class="btn_botoes" asp-action="AtualizarFuncionario" asp-route-id="@item.CodigoFunId">Atualizar</a>
+                                    <a class="btn_botoes" asp-action="ExcluirFuncionario" asp-route-id="@item.CodigoFunId">Excluir</a>
+                                    <!--<a asp-action="Index" asp-route="">Funcionarios Ramais</a>-->
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                </div>
+            </div>
+   
