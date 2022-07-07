@@ -9,13 +9,13 @@ namespace ListaDeRamais.E2.Models
     public class FuncionarioCadastroModal
     {
         public int CodigoFunId { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Campo obrigatorio!!")]
         public string Nome { get; set; }
         [Required]
         public string Sobrenome { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Campo obrigatório!!")]
         public string Cargo { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo obrigatório!!")]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -24,7 +24,7 @@ namespace ListaDeRamais.E2.Models
 
 
 
-        [Required]
+        
         public IList<Telefone> Telefones { get; set; } = new List<Telefone>();
 
 

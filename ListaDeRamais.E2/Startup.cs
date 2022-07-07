@@ -1,4 +1,6 @@
+using FluentValidation.AspNetCore;
 using ListaDeRamais.E2.Models;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,7 +27,8 @@ namespace ListaDeRamais.E2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+               // .AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<Validator>());
+            
             services.AddScoped<Banco_ramal2Context>();
         }
 

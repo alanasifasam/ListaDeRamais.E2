@@ -16,13 +16,13 @@ namespace ListaDeRamais.E2.Models
         }
 
         public int CodigoFunId { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo obrigatório!!")]
         public string Nome { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo obrigatório!!")]
         public string Sobrenome { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo obrigatório!!")]
         public string Cargo { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Campo obrigatório!!")]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -30,9 +30,9 @@ namespace ListaDeRamais.E2.Models
         public int? CodigoFunFk { get; set; }
 
         public virtual List<FunRamais> FunRamais { get; set; } = new List<FunRamais>();
-        
-       
-        [Required]
+
+
+        //[Required(ErrorMessage = "Campo obrigatório!!")]
         public IList<Telefone> Telefones { get; set; } = new List<Telefone>();
     }
 }

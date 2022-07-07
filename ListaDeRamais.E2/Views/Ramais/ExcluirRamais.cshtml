@@ -31,17 +31,14 @@
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.HostIp)
                 </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CodigoDepFkNavigation)
-                </dt>
-             
+
             </dl>
 
             <form asp-action="ExcluirRamais">
-                <h6>Você tem certeza que quer deletar ?</h6>
+                <h6>Você tem certeza que deseja excluir o ramal ?</h6>
                 <input type="hidden" asp-for="CodigoRamalId" />
-                <input type="submit" value="Delete" class="btn btn-danger" /> |
-                <a asp-action="Index">Voltar para a lista ?</a>
+                <input type="submit" value="Excluir" class="btn_botoes" /> |
+                <a class="btn_botoes" asp-action="Index">Voltar para lista</a>
             </form>
         </div>
 </div>

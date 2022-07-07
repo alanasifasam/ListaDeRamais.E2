@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -21,7 +20,9 @@ namespace ListaDeRamais.E2.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var list = _context.Departamentos.Include(x => x.Ramais).ToList();
+            var list = _context.Ramais
+                                .Include(x => x.CodigoDepFkNavigation)
+                                .ToList();
             return View(list);
 
         }
@@ -31,29 +32,19 @@ namespace ListaDeRamais.E2.Controllers
         {
             if (!String.IsNullOrEmpty(depbuscar))
             {
-
-                var DPbuscar = await _context.Departamentos.Include(x => x.Ramais)
-                    .Where(x => x.Nome.ToUpper().Contains(depbuscar.ToUpper()))
-                    .ToListAsync();
-
-
+                var DPbuscar = await _context.Ramais
+                                             .Include(x => x.CodigoDepFkNavigation)
+                                             .Where(x => x.CodigoDepFkNavigation.Nome.ToUpper().Contains(depbuscar)
+                                                    ||x.NumeroRamal.ToString().Contains(depbuscar))
+                                             .ToListAsync(); 
                 return View(DPbuscar);
             }
 
-            var list = _context.Departamentos.Include(x => x.Ramais).ToList();
+            var list = _context.Ramais
+                               .Include(x => x.CodigoDepFkNavigation)
+                               .ToList();
             return View(list);
         }
-
-        public IActionResult Criar()
-        {
-            Departamento departamento = new Departamento();
-
-            _context.Add(departamento);
-            // _context.SaveChanges();
-
-            return View();
-        }
-
     }
 }
 

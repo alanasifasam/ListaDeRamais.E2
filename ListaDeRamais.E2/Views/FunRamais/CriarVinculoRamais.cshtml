@@ -1,10 +1,7 @@
-﻿@model ListaDeRamais.E2.Models.VincularViewModel;
+﻿@model  ListaDeRamais.E2.Models.VincularViewModel
 @{
     ViewData["Title"] = "FunRamais";
 }
-
-
-
 
 <div class="container Cards">
     <div class="card-body mb-lg-5 p-lg-5" id="card-body">
@@ -12,42 +9,33 @@
             <div class="card-body">
                 <form asp-action="CriarVinculoRamais" class="form-group">
                     <div class="form-group">
-
-                        <label asp-for="CodigoRamalFk" class="control-label">  Ramais "LIVRES"</label>
+                        <label asp-for="CodigoRamalFk" class="control-label">  Ramais Livres</label>
                         <select asp-for="CodigoRamalFk" name="CodigoRamalFk" value="CodigoRamalFk"
                                 asp-items="@(new SelectList(Model.CodigoRamalFkNavigation,"CodigoRamalId","NumeroRamal"))"
                                 class="form-control">
-                            Ramais
                         </select>
                         <div>
                             <input asp-for="CodigoRamalFk" value="CodigoRamalFk" name="CodigoRamalFk" type='hidden' class="form-control" />
                         </div>
                     </div>
-                    <div class="form-group">
 
+                    <div class="form-group">
                         <label asp-for="CodigoFunFk" class="control-label">Funcionario</label>
                         <select asp-for="CodigoFunFk" name="CodigoFunFk" value="CodigoFunFk"
-                                asp-items="@(new SelectList(Model.CodigoFunFkNavigation,"CodigoFunId","Nome"))"
+                                asp-items="@(new SelectList(Model.CodigoFunFkNavigation, "CodigoFunId", "Nome"))"
                                 class="form-control">
                         </select>
-
                         <div>
                             <input asp-for="CodigoFunFk" value="CodigoFunFk" name="CodigoFunFk" type='hidden' class="form-control" />
                         </div>
-                    </div>
 
+                    </div>
                     <div class="form-group">
-                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <input type="submit" value="Vincular" class="btn_botoes" />|
+                        <a class="btn_botoes" asp-action="Index">Voltar para lista</a>
                     </div>
-
                 </form>
-
             </div>
-        </div>
-
-
-        <div>
-            <a asp-action="Index">Back to List</a>
         </div>
 
         @section Scripts {

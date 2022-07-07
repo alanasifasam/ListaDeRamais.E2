@@ -74,6 +74,7 @@ body {
 
 .sidebar .links_name{
         opacity: 0;
+        display:none;
         
 }
 
@@ -256,6 +257,7 @@ sidebar ul li a:hover{
 .sidebar.active .links_name{
     opacity:1;
     pointer-events:auto;
+    display:flex;
 }
 
 .container.Cards.active{/*quando ativo ajustar cards*/
@@ -279,11 +281,11 @@ sidebar ul li a:hover{
 .btn_botoes {
     text-decoration: none;
     border-radius: 5px;
-    background-color: rgb(0 0 0 / 63%);
+    background-color: #cdcdce;
     border: none;
-    color: floralwhite;
+    color:  black;
     padding: 05px 10px;
-    margin-right:5px;
+    margin-right: 5px;
     text-align: center;
     display: inline-block;
     font-size: 12px;

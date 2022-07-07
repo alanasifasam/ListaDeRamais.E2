@@ -19,5 +19,7 @@ namespace ListaDeRamais.E2.Models
         public virtual List<Ramais> CodigoRamalFkNavigation { get; set; } = new List<Ramais>();
         public int? NumeroRamal { get; set; }
 
+        public virtual FunRamais FunRamais { get; set; } 
+
     }
 }

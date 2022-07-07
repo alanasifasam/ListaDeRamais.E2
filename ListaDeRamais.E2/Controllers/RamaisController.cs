@@ -19,7 +19,7 @@ namespace ListaDeRamais.E2.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var contextAux = _context.Ramais.Include(x => x.CodigoDepFkNavigation);
+            var contextAux = _context.Ramais.Include(x => x.CodigoDepFkNavigation).OrderBy(x => x.NumeroRamal);
             return View(await contextAux.ToListAsync());
         }
 

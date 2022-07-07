@@ -50,38 +50,12 @@
                             <span class="navbar-toggler-icon "></span>
                         </button>
 
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                                <li class="nav-item text-white">
-                                    <a class="nav-link " asp-controller="Departamento" asp-action="Index">Departamentos</a>
-                                </li>
-                                <li class="nav-item text-white">
-                                    <a class="nav-link " asp-controller="Funcionario" asp-action="Index">Funcionarios</a>
-                                </li>
-                                <li class="nav-item text-white">
-                                    <a class="nav-link " asp-controller="Ramais" asp-action="Index">Ramais</a>
-                                </li>
-
-                            </ul>
-                            <!--
-              <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-               <button class="btn btn-outline-success" type="submit">Search</button>
-              </form>
-            -->
-                        </div>
+                      
                     </div>
 
                 </nav>
 
         </div>
-
-
-
-
-
 
 
 
@@ -110,35 +84,35 @@
                 <a asp-controller="FunRamais" asp-action="Index">
                     <i class='bx bx-list-ol'></i>
                     <span class="links_name">Lista de Ramais</span>
-                    <span class="toolipe">Lista de Ramais</span>
+                    
                 </a>
             </li>
             <li>
                 <a asp-controller="Departamento" asp-action="Index">
                     <i class='bx bxs-business'></i>
                     <span class="links_name">Ramais por departamento</span>
-                    <span class="toolipe">Ramais por departamento</span>
+                    
                 </a>
             </li>
             <li>
                 <a asp-controller="Ramais" asp-action="Index">
                     <i class='bx bx-phone'></i>
                     <span class="links_name">Cadastrar Ramais</span>
-                    <span class="toolipe">Cadastrar Ramais</span>
+                    
                 </a>
             </li>
             <li>
                 <a asp-controller="Funcionario" asp-action="Index">
                     <i class='bx bx-user-plus'></i>
                     <span class="links_name">Cadastrar funcionario</span>
-                    <span class="toolipe">Cadastrar funcionario</span>
+                    
                 </a>
             </li>
             <li>
                 <a asp-controller="FunRamais" asp-action="CriarVinculoRamais">
                     <i class='bx bx-loader-circle bx-rotate-180'></i>
                     <span class="links_name">Atribuir ramal a funcionario</span>
-                    <span class="toolipe">Atribuir ramal a funcionario</span>
+                   
                 </a>
             </li>
         </ul>
@@ -157,7 +131,9 @@
     </div>
     <!--sidebar-->
     <div class="homeContent">
-        <h2>Home</h2>
+        <a class="navbar-brand" asp-controller="FunRamais" asp-action="Index">
+            <h2>Ramais</h2>
+        </a>
     </div>
 
 

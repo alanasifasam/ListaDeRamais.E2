@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using ListaDeRamais.E2.Models;
+
 
 
 namespace ListaDeRamais.E2.Models
@@ -14,9 +14,9 @@ namespace ListaDeRamais.E2.Models
         [Required(ErrorMessage ="Numero do Ramal é obrigatório !!")]
         [Range(3999,4999, ErrorMessage ="Ramais de 4000 a 4999")]
         public int NumeroRamal { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Senha é obrigatório!!")]
         public string Senha { get; set; }
-        [Required]
+        [Required(ErrorMessage ="Endereço de IP é obrigatório !!")]
         public int HostIp { get; set; }
         public int CodigoRamalId { get; set; }
         public List<Ramais> Ramais { get; set; }
