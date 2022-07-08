@@ -19,7 +19,8 @@ namespace ListaDeRamais.E2.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var contextAux = _context.Ramais.Include(x => x.CodigoDepFkNavigation).OrderBy(x => x.NumeroRamal);
+            var contextAux = _context.Ramais.Include(x => x.CodigoDepFkNavigation)
+                                            .OrderBy(x => x.NumeroRamal);
             return View(await contextAux.ToListAsync());
         }
 
@@ -88,9 +89,9 @@ namespace ListaDeRamais.E2.Controllers
                 if (ModelState.IsValid)
                 {
                     var ramalRemove = _context.Ramais.Where(x => x.CodigoRamalId == ramal.CodigoRamalId).ToList();
-                    _context.Ramais.RemoveRange(ramalRemove);
-                    _context.Update(ramal);
-                    await _context.SaveChangesAsync();//
+                                      _context.Ramais.RemoveRange(ramalRemove);
+                                      _context.Update(ramal);
+                                await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 else return View(ramal);

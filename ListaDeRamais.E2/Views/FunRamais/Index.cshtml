@@ -9,15 +9,19 @@
 
 <div class="container Cards">
     <div class="card-body mb-lg-5 p-lg-5" id="card-body">
-        <p>
-            <a asp-action="CriarVinculoRamais">
+        <p class="icons-lista">
+            <a asp-action="CriarVinculoRamais" class="btn_botoes">
                 <i class='bx bx-loader-circle bx-rotate-180' style='color:#153f6c'></i>
                 Atribuir Ramal
             </a>
+            <a asp-action="VisualizarPDF" class="btn_botoes">
+                <i class='bx bxs-file-pdf' style='color:#153f6c'></i>
+                Gerar PDF
+            </a>
         </p>
-        <div class="container d-inline-flex w-50 p-3">
-            <div class="container small" id="card-box-pesquisar">
-                <form asp-controller="FunRamais" asp-action="Index" method="post">
+        <div class="container d-table-cell p-3" class="card-box-pesquisar" >
+            <div class="container small" >
+                <form asp-controller="FunRamais" asp-action="Index" method="post" class="pesquisa">
                     <input class="form-control " name="txtProcurar" />
                     <button type="submit" class="btn_botoes">Pesquisar</button>
                 </form>

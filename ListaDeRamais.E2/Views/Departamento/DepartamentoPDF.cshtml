@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ListaDeRamais.E2.Models.Ramais>
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/Style.css" />
+        <link rel="stylesheet" href="https://bootswatch.com/5/cosmo/bootstrap.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.css" />
+        <link rel="stylesheet" herf="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.css" />
+
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600,700' rel='stylesheet' type='text/css'>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.css" rel="stylesheet">
+    </environment>
+
+        <title>DepartamentoPDF</title>
+</head>
+<body>
+ <h5 class="text-center">Lista de Ramais por Departamento</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <h6>Departamento</h6>
+                    </th>
+                    <th>
+                        <h6>Ramais</h6>
+                    </th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CodigoDepFkNavigation.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumeroRamal)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </body>
+</html>

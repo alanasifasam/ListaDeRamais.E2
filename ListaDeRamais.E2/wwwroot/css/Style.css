@@ -297,3 +297,17 @@ sidebar ul li a:hover{
     margin-left: auto;
     margin-right: auto;
 }
+
+@media (min-width: 576px) .Cards {
+    max-width: 540px;
+}
+
+
+.icons-lista {
+    margin-top: 0;
+    margin-bottom: 5px;
+    margin-left: 80%;
+}
+.card-box-pesquisar{
+    margin-left
+}

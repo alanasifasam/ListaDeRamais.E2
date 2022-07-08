@@ -1,6 +1,7 @@
 ﻿using ListaDeRamais.E2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Rotativa.AspNetCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -26,6 +27,18 @@ namespace ListaDeRamais.E2.Controllers
             return View(list);
 
         }
+        public IActionResult DepartamentoPDF()
+        {
+            var listapdf = _context.Ramais
+                                .Include(x => x.CodigoDepFkNavigation)
+                                .OrderBy(x=>x.CodigoDepFkNavigation.Nome)
+                                
+                                .ToList();
+
+            return new ViewAsPdf("DepartamentoPDF", listapdf) { FileName = "dados.pdf" };
+        }
+
+
 
         [HttpPost]
         public async Task<IActionResult> Index(String depbuscar)

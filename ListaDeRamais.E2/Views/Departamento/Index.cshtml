@@ -9,10 +9,13 @@
 
     <div class="container Cards">
         <div class="card-body mb-lg-5 p-lg-5 " id="card-body">
-
+            <a asp-action="DepartamentoPDF" class="btn_botoes">
+                <i class='bx bxs-file-pdf' style='color:#153f6c'></i>
+                Gerar PDF
+            </a>
 
             <div class="container d-inline-flex w-50 p-3">
-                <div class="container m-auto " id="card-box-pesquisar" >
+                <div class="container m-auto " id="card-box-pesquisar">
 
                     <form asp-controller="Departamento" asp-action="Index" method="post">
                         <input class="form-control" name="depbuscar" />
@@ -25,16 +28,16 @@
 
             <div class="card">
                 <div class="container mt-3">
-                 
+
                     <table class="table">
                         <thead>
                             <tr>
                                 <th>
-                                  <h6>Departamento</h6>
+                                    <h6>Departamento</h6>
 
                                 </th>
                                 <th>
-                                  <h6>Ramais</h6>
+                                    <h6>Ramais</h6>
 
                                 </th>
                             </tr>

@@ -18,14 +18,11 @@ namespace ListaDeRamais.E2.Controllers
             _context = context;
         }
 
-
-
-
         public async Task<IActionResult> Index()
         {
             var contextAux = _context.Funcionarios
-                .Include(t => t.Telefones)
-                .Include(x => x.FunRamais);
+                                     .Include(t => t.Telefones)
+                                     .Include(x => x.FunRamais);
             return View(await contextAux.ToListAsync());
         }
 
@@ -36,9 +33,7 @@ namespace ListaDeRamais.E2.Controllers
         public IActionResult CriarFuncionario()
         {
 
-             Funcionario funcionario = new Funcionario() { };
-
-
+            Funcionario funcionario = new Funcionario() { };
             funcionario.Telefones.Add(new Telefone() { });
             funcionario.Telefones.Add(new Telefone() { });
 
@@ -69,8 +64,9 @@ namespace ListaDeRamais.E2.Controllers
         public IActionResult AtualizarFuncionario(int id)
         {
             Funcionario funcionario = _context.Funcionarios
-                .Include(x => x.Telefones)
-                .Where(x => x.CodigoFunId == id).FirstOrDefault();
+                                              .Include(x => x.Telefones)
+                                              .Where(x => x.CodigoFunId == id)
+                                              .FirstOrDefault();
             return View(funcionario);
 
         }
@@ -82,9 +78,11 @@ namespace ListaDeRamais.E2.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    List<Telefone> listTEL = _context.Telefones.Where(x => x.CodigoFunFk == funcionario.CodigoFunId).ToList();
-                    _context.Telefones.RemoveRange(listTEL);
-                    _context.SaveChanges();
+                    List<Telefone> listTEL = _context.Telefones
+                                                    .Where(x => x.CodigoFunFk == funcionario.CodigoFunId)
+                                                    .ToList();
+                                            _context.Telefones.RemoveRange(listTEL);
+                                            _context.SaveChanges();
 
                     _context.Update(funcionario);
                     await _context.SaveChangesAsync();
@@ -115,7 +113,9 @@ namespace ListaDeRamais.E2.Controllers
             if (id != null)
             {
 
-                List<Telefone> listTEL = _context.Telefones.Where(x => x.CodigoFunFk == funcionario.CodigoFunId).ToList();
+                List<Telefone> listTEL = _context.Telefones
+                                                 .Where(x => x.CodigoFunFk == funcionario.CodigoFunId)
+                                                 .ToList();
                 _context.Telefones.RemoveRange(listTEL);
                 _context.SaveChanges();
 
@@ -133,25 +133,3 @@ namespace ListaDeRamais.E2.Controllers
 
 
 
-// if(telefone.CodigoFunFk == funcionario.CodigoFunId)
-//  {
-//  // telefone = _context.Telefones.Find(id);
-
-// funcionario.Telefones.Add(telefone);//CHEGOU VALORES NULL
-/*if (await TryUpdateModelAsync<Telefone>
-                    (
-                        emptyTelefone,
-                         "Telefones",   // Prefix for form value.
-                        x => x.NumeroTelefone))
-                {
- var emptyTelefone = new Telefone();
-_context.Telefones.Add(emptyTelefone);
- //buscar qual foi o id que adicionou para funcionario e adicionar no id do telefone.
-                //chega null
-return NotFound();
-//var telefones = _context.Telefones.ToList();
-
-           // FunTelFormViewModel funTelFormViewModel = new FunTelFormViewModel ();
-  public Telefone Telefone { get; set; }
-[BindProperty]
-*/

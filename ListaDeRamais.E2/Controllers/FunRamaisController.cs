@@ -1,6 +1,7 @@
 ﻿using ListaDeRamais.E2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Rotativa.AspNetCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,6 +29,17 @@ namespace ListaDeRamais.E2.Controllers
             return View(FunRamais);
         }
 
+        public IActionResult VisualizarPDF()
+        {
+            var listapdf = _context.FunRamais
+                                            .Include(x => x.CodigoFunFkNavigation)
+                                            .Include(n => n.CodigoRamalFkNavigation)
+                                            .Include(x=>x.CodigoRamalFkNavigation.CodigoDepFkNavigation)
+                                            .OrderBy(x => x.CodigoFunFkNavigation.Nome)
+                                            .ToList();
+
+            return new ViewAsPdf("VisualizarPDF", listapdf) { FileName = "dados.pdf" };
+        }
 
         [HttpPost]
         public async Task<IActionResult> Index(string txtProcurar)
