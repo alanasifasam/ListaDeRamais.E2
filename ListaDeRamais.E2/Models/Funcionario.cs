@@ -10,9 +10,6 @@ namespace ListaDeRamais.E2.Models
     {
         public Funcionario()
         {
-           // FunRamais = new HashSet<FunRamais>();
-           
-          // Telefones = new List<Telefone>();
         }
 
         public int CodigoFunId { get; set; }
@@ -25,14 +22,8 @@ namespace ListaDeRamais.E2.Models
         [Required(ErrorMessage = "Campo obrigatório!!")]
         [EmailAddress]
         public string Email { get; set; }
-
-
         public int? CodigoFunFk { get; set; }
-
         public virtual List<FunRamais> FunRamais { get; set; } = new List<FunRamais>();
-
-
-        //[Required(ErrorMessage = "Campo obrigatório!!")]
         public IList<Telefone> Telefones { get; set; } = new List<Telefone>();
     }
 }

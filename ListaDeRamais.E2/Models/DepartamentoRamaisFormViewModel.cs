@@ -27,6 +27,10 @@ namespace ListaDeRamais.E2.Models
        
         public string Nome { get; set; }
         public int CodigoDepId { get; set; }
+
+
+        public int? CodigoRamalFk { get; set; }
+        public virtual FunRamais FunRamais { get; set; }
     }
 
     

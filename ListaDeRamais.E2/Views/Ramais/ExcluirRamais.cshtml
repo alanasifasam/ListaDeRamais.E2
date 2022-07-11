@@ -1,4 +1,4 @@
-﻿@model ListaDeRamais.E2.Models.Ramais
+﻿@model ListaDeRamais.E2.Models.DepartamentoRamaisFormViewModel
 
 @{
     ViewData["Title"] = "ExcluirRamais";
@@ -14,19 +14,19 @@
             <hr />
             <dl class="row">
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.NumeroRamal)
+                   <h6>Numero do Ramal</h6>
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.NumeroRamal)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Senha)
+                   <h6>Senha</h6>
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.Senha)
                 </dd>
                 <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.HostIp)
+                   <h6>Endereço de IP</h6>
                 </dt>
                 <dd class="col-sm-10">
                     @Html.DisplayFor(model => model.HostIp)
@@ -36,10 +36,13 @@
 
             <form asp-action="ExcluirRamais">
                 <h6>Você tem certeza que deseja excluir o ramal ?</h6>
-                <input type="hidden" asp-for="CodigoRamalId" />
-                <input type="submit" value="Excluir" class="btn_botoes" /> |
+                <input type="hidden" asp-for="Ramais" />
+                <input type="submit" value="Excluir" class="btn_botoes" onclick="alertaExcluir()" /> |
                 <a class="btn_botoes" asp-action="Index">Voltar para lista</a>
             </form>
+
+            
+           
         </div>
 </div>
 </div>

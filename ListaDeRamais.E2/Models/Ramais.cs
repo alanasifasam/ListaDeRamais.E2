@@ -12,10 +12,6 @@ namespace ListaDeRamais.E2.Models
         public string Senha { get; set; }
         public int HostIp { get; set; }
 
-        
-       
-        
-
         public int? CodigoDepFk { get; set; }
         public virtual Departamento CodigoDepFkNavigation { get; set; }
 

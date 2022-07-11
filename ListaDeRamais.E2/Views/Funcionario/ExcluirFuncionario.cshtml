@@ -41,7 +41,7 @@
 
             <form asp-action="ExcluirFuncionario">
                 <input type="hidden" asp-for="CodigoFunId" />
-                <input type="submit" value="Excluir" class="btn_botoes" /> |
+                <input type="submit" value="Excluir" class="btn_botoes" onclick="alertaExcluirFuncionario()" /> |
                 <a class="btn_botoes" asp-action="Index">Voltar para lista</a>
             </form>
         </div>

@@ -79,10 +79,10 @@ namespace ListaDeRamais.E2.Controllers
                 if (ModelState.IsValid)
                 {
                     List<Telefone> listTEL = _context.Telefones
-                                                    .Where(x => x.CodigoFunFk == funcionario.CodigoFunId)
-                                                    .ToList();
-                                            _context.Telefones.RemoveRange(listTEL);
-                                            _context.SaveChanges();
+                                                     .Where(x => x.CodigoFunFk == funcionario.CodigoFunId)
+                                                     .ToList();
+                    _context.Telefones.RemoveRange(listTEL);
+                    _context.SaveChanges();
 
                     _context.Update(funcionario);
                     await _context.SaveChangesAsync();
@@ -112,16 +112,43 @@ namespace ListaDeRamais.E2.Controllers
         {
             if (id != null)
             {
+                Funcionario funcionariobuscar = _context.Funcionarios.Find(id);
+
+                List<Funcionario> funcionarioIDvinculo = _context.Funcionarios
+                                                                 .Include(x => x.FunRamais)
+                                                                 .Where(x => x.FunRamais.FirstOrDefault().CodigoFunFk == id)
+                                                                 .ToList();
 
                 List<Telefone> listTEL = _context.Telefones
                                                  .Where(x => x.CodigoFunFk == funcionario.CodigoFunId)
                                                  .ToList();
-                _context.Telefones.RemoveRange(listTEL);
-                _context.SaveChanges();
+                funcionario = funcionariobuscar;
 
-                _context.Remove(funcionario);
-                await _context.SaveChangesAsync();
+                if (funcionario.FunRamais == null ||  funcionario.FunRamais.Count == 0)
+                {//remove telefone e funcionario sem vinculo. 
+                    _context.Telefones.RemoveRange(listTEL);
+                    _context.SaveChanges();
+
+                          _context.Remove(funcionario);
+                    await _context.SaveChangesAsync();
+
+                    return RedirectToAction(nameof(Index));
+
+                }else if (funcionariobuscar.FunRamais != null)
+                {//remove vinculo,telefone e funcionario.
+
+                    _context.FunRamais.RemoveRange(funcionariobuscar.FunRamais);
+                    _context.Telefones.RemoveRange(listTEL);
+                    await _context.SaveChangesAsync();
+
+                    funcionario = funcionariobuscar;
+
+                          _context.Remove(funcionario);
+                    await _context.SaveChangesAsync();
+                }
                 return RedirectToAction(nameof(Index));
+
+
             }
             else return NotFound();
 

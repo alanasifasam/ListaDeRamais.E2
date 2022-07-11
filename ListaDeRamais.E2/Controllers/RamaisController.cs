@@ -70,8 +70,6 @@ namespace ListaDeRamais.E2.Controllers
                     Senha=ramal.Senha,
                     HostIp = ramal.HostIp,
                     CodigoRamalId=ramal.CodigoRamalId
-                    
-
                 };
                 return View(viewModel);
             }
@@ -103,10 +101,23 @@ namespace ListaDeRamais.E2.Controllers
         [HttpGet]
         public IActionResult ExcluirRamais(int? id)
         {
-            if (id != null)
+            if (id != null )
             {
                 Ramais ramal = _context.Ramais.Find(id);
-                return View(ramal);
+                var contextAux = _context.FunRamais.ToList();
+                var contextAux2 = _context.Departamentos.ToList();
+
+                var viewModel = new DepartamentoRamaisFormViewModel
+                {
+                   CodigoRamalFk = contextAux.FirstOrDefault().CodigoRamalFk,
+                   NumeroRamal = ramal.NumeroRamal,
+                   HostIp=ramal.HostIp,
+                   Senha=ramal.Senha,
+                   CodigoDepFkNavigation = contextAux2,
+                   Ramais = new List<Ramais>() { ramal },
+                };
+
+                return View(viewModel);
             }
             else return NotFound();
         }
@@ -115,10 +126,33 @@ namespace ListaDeRamais.E2.Controllers
         [HttpPost]
         public async Task<IActionResult> ExcluirRamais(int? id, Ramais ramal)
         {
-            if (id != null)
+            if (id != null  )
             {
-                _context.Remove(ramal);
-                await _context.SaveChangesAsync();
+                Ramais ramalb = _context.Ramais.Find(id);
+
+                List<Ramais> ramalID = _context.Ramais
+                                               .Include(x => x.FunRamais)
+                                               .Where(x => x.FunRamais.FirstOrDefault().CodigoRamalFk == id)
+                                               .ToList();
+                
+                if (ramalb.FunRamais == null && ramalID.Count == 0) {//exclui ramal sem vinculo 
+
+                    ramal = ramalb;
+                    _context.Remove(ramal);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+
+                } else if (ramalb.FunRamais != null) {// se tiver vinculo, exclui vinculo e depois ramal. 
+
+                    _context.FunRamais
+                            .RemoveRange(ramalID.FirstOrDefault().FunRamais);
+                    await _context.SaveChangesAsync();
+
+                    ramal = ramalb;
+
+                    _context.Remove(ramal);
+                    await _context.SaveChangesAsync();
+                }
                 return RedirectToAction(nameof(Index));
             }
             else return NotFound();
