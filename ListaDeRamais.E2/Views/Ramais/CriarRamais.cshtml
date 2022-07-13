@@ -1,10 +1,6 @@
 ﻿@model DepartamentoRamaisFormViewModel;
 
 
-
-
-
-
 <div class="container Cards">
     <div class="card-body mb-lg-5 p-lg-5" id="card-body">
         <div class="row">
@@ -13,7 +9,9 @@
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                     <div class="form-group">
-                        <label  class="control-label">Numero do Ramal</label>
+                        <label class="control-label">Numero do Ramal</label>
+                        <!-- Button trigger modal -->
+                        <i class='bx bxs-info-circle' style='color:#352a7a' data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                         <input asp-for="NumeroRamal" class="form-control" />
                         <span asp-validation-for="NumeroRamal" class="text-danger"></span>
                     </div>
@@ -23,7 +21,7 @@
                         <span asp-validation-for="Senha" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label  class="control-label">Endereço de IP </label>
+                        <label class="control-label">Endereço de IP </label>
                         <input asp-for="HostIp" class="form-control" />
                         <span asp-validation-for="HostIp" class="text-danger"></span>
                     </div>
@@ -51,8 +49,37 @@
             <a class="btn_botoes" asp-action="Index">Voltar para a lista</a>
         </div>
 
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Regra de Criação</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Criar ramal entre 4000 a 4999, se caso o número já exista, adicionar o próximo correspondente ou algum livre que não contém na lista de ramais.
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn_botoes" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+
+
         @section Scripts {
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
         }
-</div>
+
+        
+        
+
+
+    </div>
 </div>

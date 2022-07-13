@@ -20,3 +20,8 @@ function alertaExcluir(){
 function alertaExcluirFuncionario() {
     alert('Caso o funcionário esteja vinculado com algum ramal, o vínculo será excluído junto com o ramal.')
 };
+
+
+$(document).ready(function () {
+    $('#ModalError').modal('show');
+});

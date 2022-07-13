@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ListaDeRamais.E2.Models.Ramais>
+<html>
+<body>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ModalError" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Erro ao criar ramal! Número já existe! </h5>
+                </div>
+                <div class="modal-body">
+                    Este ramal já consta na lista de ramais.
+                    Adicionar o próximo correspondente ou algum livre que não contém na lista.
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                               <h6>Ramais Indisponíveis</h6>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NumeroRamal)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="modal-footer">
+                    <a asp-action="CriarRamais" class="btn_botoes">Fechar</a>
+  
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

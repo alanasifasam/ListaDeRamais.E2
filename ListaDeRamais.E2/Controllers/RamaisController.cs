@@ -1,7 +1,6 @@
 ﻿using ListaDeRamais.E2.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -35,9 +34,7 @@ namespace ListaDeRamais.E2.Controllers
             {
                 CodigoDepFkNavigation = contextAux,
                 Ramais = new List<Ramais>() {  },
-            };
-            
-
+            };   
             return View(viewModel);
         }
 
@@ -46,13 +43,30 @@ namespace ListaDeRamais.E2.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(ramal);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+               var ramalExistente = _context.Ramais
+                                            .Where(x=>x.NumeroRamal == ramal.NumeroRamal).ToList();
+                var ramaisExistentes = _context.Ramais.ToList();
+                
+                
+                    if (ramalExistente.Count > 0)
+                    {
+                    return RedirectToAction(nameof(MostrarError));
+                }
+                    else
+                    {
+                            _context.Add(ramal);
+                            await _context.SaveChangesAsync();
+                    }
+                    return RedirectToAction(nameof(Index));   
             }
-            else return View(ramal);
+            return NotFound();
         }
 
+        public IActionResult MostrarError()
+        {
+            var contextAux = _context.Ramais.OrderBy(x => x.NumeroRamal);
+            return View(contextAux.ToList()); 
+        }
 
         [HttpGet]
         public IActionResult AtualizarRamais(int? id)

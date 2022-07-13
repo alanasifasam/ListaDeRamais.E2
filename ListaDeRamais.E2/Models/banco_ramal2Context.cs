@@ -177,20 +177,7 @@ namespace ListaDeRamais.E2.Models
 
             });
 
-            /*modelBuilder.Entity<Funcionario>()
-                .HasOne(x => x.Telefones)
-                .WithOne(x => x.Funcionario)
-                .HasForeignKey<Funcionario>(x => x.CodigoFunFk);
-
-
-            modelBuilder.Entity<Telefone>()
-                .HasOne(x => x.Funcionario)
-                .WithOne(x => x.Telefones);
-
-             entity.HasOne(d => d.Funcionario)
-                      .WithOne(p => p.Telefones)
-                      .HasForeignKey<Funcionario>(x => x.CodigoFunFk);
-            */
+         
             OnModelCreatingPartial(modelBuilder);
         }
 
