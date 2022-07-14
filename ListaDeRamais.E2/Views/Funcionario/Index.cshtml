@@ -9,70 +9,87 @@
 
 <div class="container Cards">
     <div class="card-body mb-lg-5 p-lg-5" id="card-body">
-        <p>
-            <a asp-action="CriarFuncionario"  class="btn_botoes " >
-                Criar novo funcionario
-                
-            </a>
-        </p>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                               <h6>Nome</h6>
-                            </th>
-                            <th>
-                               <h6>Sobrenome</h6>
-                            </th>
-                            <th>
-                                <h6>Cargo</h6>
-                            </th>
-                            <th>
-                               <h6>Email</h6>
-                            </th>
-                            <th>
-                               <h6>Telefones</h6>
-                            </th>
 
+        <div class="container position-sticky z-index-sticky top-0">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                        <div class="container-fluid">
+                            <h4 class="text-center">Funcionários</h4>
+                           
+                            <p>
+                                <a asp-action="CriarFuncionario" class="btn_botoes ">
+                                    Criar novo funcionario
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Nome)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Sobrenome)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Cargo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                <td>
-                                   
-                                    @foreach (var telefone in item.Telefones)
-                                    {
-                                        <a>      </a>
-                                        @Html.DisplayFor(m => telefone.NumeroTelefone)
-                                    
-                                        
-                                    }
-                                </td>
+                                </a>
+                            </p>
 
-                                <td>
-                                    <a class="btn_botoes" asp-action="AtualizarFuncionario" asp-route-id="@item.CodigoFunId">Atualizar</a>|
-                                    <a class="btn_botoes" asp-action="ExcluirFuncionario" asp-route-id="@item.CodigoFunId">Excluir</a>
-                                    
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                        </div>
+                    </nav>
                 </div>
             </div>
-   
+        </div>
+
+        <div class="card">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <h6>Nome</h6>
+                        </th>
+                        <th>
+                            <h6>Sobrenome</h6>
+                        </th>
+                        <th>
+                            <h6>Cargo</h6>
+                        </th>
+                        <th>
+                            <h6>Email</h6>
+                        </th>
+                        <th>
+                            <h6>Telefones</h6>
+                        </th>
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Sobrenome)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cargo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+
+                                @foreach (var telefone in item.Telefones)
+                                {
+                                    <a>      </a>
+                                    @Html.DisplayFor(m => telefone.NumeroTelefone)
+
+
+                                }
+                            </td>
+
+                            <td>
+                                <a class="btn_botoes" asp-action="AtualizarFuncionario" asp-route-id="@item.CodigoFunId">Atualizar</a>|
+                                <a class="btn_botoes" asp-action="ExcluirFuncionario" asp-route-id="@item.CodigoFunId">Excluir</a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

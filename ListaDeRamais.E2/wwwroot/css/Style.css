@@ -10,11 +10,12 @@
     flex: 1 1 auto;
     padding: 1rem 1rem;
     box-shadow: 0 0 1em #808080;
+  
 }
 
 .Cards {
     top: 10px;
-    left: 69px; /*69px;sidebar desativado */
+    left: 0px /*69px;sidebar desativado */
     right: 100px;
     position: relative;
     display: flex;
@@ -290,6 +291,7 @@ sidebar ul li a:hover{
     display: inline-block;
     font-size: 12px;
     cursor: pointer;
+    margin-top:5px;
 }
 
 .table {
@@ -306,9 +308,19 @@ sidebar ul li a:hover{
 .icons-lista {
     margin-top: 0;
     margin-bottom: 5px;
-    margin-left: 80%;
-}
-.card-box-pesquisar{
-    margin-left
+    
 }
 
+.card {
+    margin-top:15%;
+}
+.col-6 {
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+.col-8 {
+    margin-left: 15%;
+    margin-right:15%;
+    margin-top: 15%;
+}

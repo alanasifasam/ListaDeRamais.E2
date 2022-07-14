@@ -8,50 +8,68 @@
 
 <div class="container Cards">
     <div class="card-body mb-lg-5 p-lg-5" id="card-body">
-        <p>
-            <a class="btn_botoes" asp-action="CriarRamais">Criar novo Ramal</a>
-        </p>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                       <h6>Numero do Ramal</h6>
-                    </th>
-                    <th>
-                       <h6> Senha</h6>
-                    </th>
-                    <th>
-                       <h6>Endereço de IP</h6>
-                    </th>
-                    <th>
-                        <h6>Departamento</h6>
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+
+        <div class="container position-sticky z-index-sticky top-0">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                        <div class="container-fluid">
+                            <h4 class="text-center">Ramais</h4>
+
+                            <p>
+                                <a class="btn_botoes" asp-action="CriarRamais">Criar novo Ramal</a>
+                            </p>
+
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.NumeroRamal)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Senha)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.HostIp)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CodigoDepFkNavigation.Nome)
-                        </td>
-                        <td>
-                            <a class="btn_botoes" asp-action="AtualizarRamais" asp-route-id="@item.CodigoRamalId">Atualizar</a> |
-                            <a class="btn_botoes" asp-action="ExcluirRamais" asp-route-id="@item.CodigoRamalId">Excluir</a>
-                        </td>
+                        <th>
+                            <h6>Numero do Ramal</h6>
+                        </th>
+                        <th>
+                            <h6> Senha</h6>
+                        </th>
+                        <th>
+                            <h6>Endereço de IP</h6>
+                        </th>
+                        <th>
+                            <h6>Departamento</h6>
+                        </th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
-</div>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumeroRamal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Senha)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.HostIp)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodigoDepFkNavigation.Nome)
+                            </td>
+                            <td>
+                                <a class="btn_botoes" asp-action="AtualizarRamais" asp-route-id="@item.CodigoRamalId">Atualizar</a> |
+                                <a class="btn_botoes" asp-action="ExcluirRamais" asp-route-id="@item.CodigoRamalId">Excluir</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+     </div>
 </div>

@@ -1,15 +1,31 @@
-﻿@model  ListaDeRamais.E2.Models.VincularViewModel
+﻿@model ListaDeRamais.E2.Models.VincularViewModel
 @{
     ViewData["Title"] = "FunRamais";
 }
 
 <div class="container Cards">
     <div class="card-body mb-lg-5 p-lg-5" id="card-body">
-        <div class="card">
-            <div class="card-body">
+
+        <div class="container position-sticky z-index-sticky top-0">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                        <div class="container-fluid">
+
+                            <h4 class="text-center">Atribuir Ramal</h4>
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="card col-6">
+            <div class="card-body text-center ">
+
                 <form asp-action="CriarVinculoRamais" class="form-group">
                     <div class="form-group">
-                        <label asp-for="CodigoRamalFk" class="control-label">  Ramais Livres</label>
+                        <label asp-for="CodigoRamalFk" class="control-label">Ramais Livres</label>
                         <select asp-for="CodigoRamalFk" name="CodigoRamalFk" value="CodigoRamalFk"
                                 asp-items="@(new SelectList(Model.CodigoRamalFkNavigation,"CodigoRamalId","NumeroRamal"))"
                                 class="form-control">
@@ -38,8 +54,13 @@
             </div>
         </div>
 
+
         @section Scripts {
             @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
         }
+
+
+    </div>
 </div>
-</div>
+
+

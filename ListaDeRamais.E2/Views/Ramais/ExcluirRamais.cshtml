@@ -9,40 +9,66 @@
 
 <div class="container Cards">
     <div class="card-body mb-lg-5 p-lg-5" id="card-body">
-        <div>
-            <h4>Ramais</h4>
-            <hr />
-            <dl class="row">
-                <dt class="col-sm-2">
-                   <h6>Numero do Ramal</h6>
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.NumeroRamal)
-                </dd>
-                <dt class="col-sm-2">
-                   <h6>Senha</h6>
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Senha)
-                </dd>
-                <dt class="col-sm-2">
-                   <h6>Endereço de IP</h6>
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.HostIp)
-                </dd>
 
-            </dl>
 
-            <form asp-action="ExcluirRamais">
-                <h6>Você tem certeza que deseja excluir o ramal ?</h6>
-                <input type="hidden" asp-for="Ramais" />
-                <input type="submit" value="Excluir" class="btn_botoes" onclick="alertaExcluir()" /> |
-                <a class="btn_botoes" asp-action="Index">Voltar para lista</a>
-            </form>
+        <div class="container position-sticky z-index-sticky top-0">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                        <div class="container-fluid">
 
-            
-           
+                            <h4 class="text-center">Excluir Ramal</h4>
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
         </div>
-</div>
-</div>
+
+
+
+
+
+        <div class="card col-6 fixed-section">
+            <div class="card-body text-center ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div>
+                            <h4>Ramais</h4>
+                            <hr />
+                            <dl class="row">
+                                <dt >
+                                    <h5>Numero do Ramal</h5>
+                                </dt>
+                                <dd >
+                                    @Html.DisplayFor(model => model.NumeroRamal)
+                                </dd>
+                                <dt >
+                                    <h5>Senha</h5>
+                                </dt>
+                                <dd >
+                                    @Html.DisplayFor(model => model.Senha)
+                                </dd>
+                                <dt >
+                                    <h5>Endereço de IP</h5>
+                                </dt>
+                                <dd >
+                                    @Html.DisplayFor(model => model.HostIp)
+                                </dd>
+
+                            </dl>
+
+                            <form asp-action="ExcluirRamais">
+                                <h5>Você tem certeza que deseja excluir o ramal ?</h5>
+                                <input type="hidden" asp-for="Ramais" />
+                                <input type="submit" value="Excluir" class="btn_botoes" onclick="alertaExcluir()" /> |
+                                <a class="btn_botoes" asp-action="Index">Voltar para lista</a>
+                            </form>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
