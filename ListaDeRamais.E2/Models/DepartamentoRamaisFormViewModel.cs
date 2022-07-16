@@ -17,6 +17,7 @@ namespace ListaDeRamais.E2.Models
         [Required(ErrorMessage ="Senha é obrigatório!!")]
         public string Senha { get; set; }
         [Required(ErrorMessage ="Endereço de IP é obrigatório !!")]
+        [Range(1000,1000000, ErrorMessage ="Apenas os 5 últimos: 192.168.xxx-xx, não colocar pontuação")]
         public int HostIp { get; set; }
         public int CodigoRamalId { get; set; }
         public List<Ramais> Ramais { get; set; }

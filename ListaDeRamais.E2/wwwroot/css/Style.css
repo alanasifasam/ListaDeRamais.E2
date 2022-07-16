@@ -312,9 +312,10 @@ sidebar ul li a:hover{
 }
 
 .card {
-    margin-top:15%;
+    margin-top:25%;
 }
 .col-6 {
+
     margin-left: 25%;
     margin-top: 10%;
 }
@@ -322,5 +323,6 @@ sidebar ul li a:hover{
 .col-8 {
     margin-left: 15%;
     margin-right:15%;
-    margin-top: 15%;
+    margin-top: 25%;
 }
+

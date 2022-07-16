@@ -12,10 +12,10 @@
         <div class="container position-sticky z-index-sticky top-0">
             <div class="row">
                 <div class="col-12">
-                    <h4 class="text-center">Lista de Ramais</h4>
-                    <nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                    
+                    <nav class="navbar navbar-expand-xxl  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                         <div class="container-fluid">
-
+                            <h4 class="text-center">Lista de Ramais</h4>
                             <p class="icons-lista">
                                 <a asp-action="CriarVinculoRamais" class="btn_botoes">
                                     <i class='bx bx-loader-circle bx-rotate-180' style='color:#153f6c'></i>
@@ -46,34 +46,41 @@
 
         <div class="card col-8">
             <div class="card-body text-center ">
-                <table class="table ">
-                    <thead>
-                        <tr>
-                            <th class="col-6">
-                                <h6>Nome</h6>
-                            </th>
-
-                            <th class="col-6">
-                                <h6>Numero do Ramal</h6>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="table-info">
-                            @foreach (var item in Model)
-                            {
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th class="col-3">
+                                    <h6>Nome</h6>
+                                </th>
+                                <th class="col-4">
+                                    <h6>Sobrenome</h6>
+                                </th>
+                                <th class="col-6">
+                                    <h6>Numero do Ramal</h6>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-info">
+                                @foreach (var item in Model)
+                                {
                             <tr>
 
                                 <td>
                                     @Html.DisplayFor(modelItem => item.CodigoFunFkNavigation.Nome)
                                 </td>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.CodigoFunFkNavigation.Sobrenome)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.CodigoRamalFkNavigation.NumeroRamal)
                                 </td>
                             </tr>
-                        }
-                        </tbody>
-                    </table>
+                            }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
             </div>

@@ -70,7 +70,8 @@
                                         <tr>
                                             <td>
 
-                                                @Html.EditorFor(x => x.Telefones[i].NumeroTelefone, new { HtmlAttributeValue = new { @class = "form-control" } })
+                                                @Html.TextBoxFor(x => x.Telefones[i].NumeroTelefone,
+                                                new { HtmlAttributes = new { @class = "form-control input" }, @placeholder = "(xx) 9xxxx-xxxx" })
                                                 <span asp-validation-for="Telefones[i].NumeroTelefone" class="text-danger"></span>
 
                                             </td>

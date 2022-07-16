@@ -52,10 +52,10 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Email</label>
-                                <input asp-for="Email" class="form-control" />
+                                <input asp-for="Email" class="form-control" placeholder="exemplo@gmail.com" />
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
-                            <div class="card">
+                           
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -71,16 +71,15 @@
                                         {
                                             <tr>
                                                 <td>
-
-                                                    @Html.EditorFor(x => x.Telefones[i].NumeroTelefone,
-                                                    new { HtmlAttributeValue = new { @class = "form-control" } })
+                                                    @Html.TextBoxFor(x => x.Telefones[i].NumeroTelefone,
+                                                    new { HtmlAttributes = new { @class = "form-control input" }, @placeholder="(xx) 9xxxx-xxxx"} )
                                                     <span asp-validation-for="Telefones[i].NumeroTelefone" class="text-danger"></span>
                                                 </td>
                                             </tr>
                                         }
                                     </tbody>
                                 </table>
-                            </div>
+                            
 
 
 

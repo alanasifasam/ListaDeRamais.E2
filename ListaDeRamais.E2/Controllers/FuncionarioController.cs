@@ -26,6 +26,26 @@ namespace ListaDeRamais.E2.Controllers
             return View(await contextAux.ToListAsync());
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Index(string ProcurarEmFuncionario)
+        {
+            if (!string.IsNullOrEmpty(ProcurarEmFuncionario))
+            {
+                var listaNome = _context.Funcionarios
+                                         .Include(t => t.Telefones)
+                                         .Where(x => x.Nome.ToUpper().Contains(ProcurarEmFuncionario)
+                                                  || x.Sobrenome.ToUpper().Contains(ProcurarEmFuncionario)
+                                                  || x.Cargo.ToUpper().Contains(ProcurarEmFuncionario)
+                                                  || x.Email.ToUpper().Contains(ProcurarEmFuncionario));
+
+                return View(await listaNome.ToListAsync());
+            }
+            var contextAux = _context.Funcionarios
+                                    .Include(t => t.Telefones)
+                                    .Include(x => x.FunRamais);
+            return View(await contextAux.ToListAsync());
+        }
+
 
 
         [HttpGet]
@@ -124,17 +144,18 @@ namespace ListaDeRamais.E2.Controllers
                                                  .ToList();
                 funcionario = funcionariobuscar;
 
-                if (funcionario.FunRamais == null ||  funcionario.FunRamais.Count == 0)
+                if (funcionario.FunRamais == null || funcionario.FunRamais.Count == 0)
                 {//remove telefone e funcionario sem vinculo. 
                     _context.Telefones.RemoveRange(listTEL);
                     _context.SaveChanges();
 
-                          _context.Remove(funcionario);
+                    _context.Remove(funcionario);
                     await _context.SaveChangesAsync();
 
                     return RedirectToAction(nameof(Index));
 
-                }else if (funcionariobuscar.FunRamais != null)
+                }
+                else if (funcionariobuscar.FunRamais != null)
                 {//remove vinculo,telefone e funcionario.
 
                     _context.FunRamais.RemoveRange(funcionariobuscar.FunRamais);
@@ -143,7 +164,7 @@ namespace ListaDeRamais.E2.Controllers
 
                     funcionario = funcionariobuscar;
 
-                          _context.Remove(funcionario);
+                    _context.Remove(funcionario);
                     await _context.SaveChangesAsync();
                 }
                 return RedirectToAction(nameof(Index));

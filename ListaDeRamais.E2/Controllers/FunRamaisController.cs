@@ -52,7 +52,8 @@ namespace ListaDeRamais.E2.Controllers
                                     .Include(x => x.CodigoFunFkNavigation)
                                     .Include(x => x.CodigoRamalFkNavigation)
                                     .Where(x => x.CodigoFunFkNavigation.Nome.ToUpper().Contains(txtProcurar)
-                                           || x.CodigoRamalFkNavigation.NumeroRamal.ToString().Contains(txtProcurar))
+                                           || x.CodigoRamalFkNavigation.NumeroRamal.ToString().Contains(txtProcurar)
+                                           || x.CodigoFunFkNavigation.Sobrenome.ToUpper().Contains(txtProcurar))
                                     .ToListAsync();
                 return View(listaNome);
             }

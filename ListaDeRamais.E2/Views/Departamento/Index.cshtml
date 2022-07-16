@@ -12,27 +12,29 @@
            
             <div class="container position-sticky z-index-sticky top-0">
                 <div class="row">
-                    <div class="col-12">
-                        <h4 class="text-center">Ramais por departamento</h4>
-                        <nav class="navbar navbar-expand-lg  blur blur-rounded top-0 z-index-fixed shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
+                    <div class="col-12">            
+                        <nav class="navbar navbar-expand-xxl  blur blur-rounded top-0  shadow position-absolute my-3 py-2 start-0 end-0 mx-4">
                             <div class="container-fluid">
+                                <h4>Ramais por departamento</h4>
+                                <br />
 
-                                    <p class="icons-lista">
-                                        <a asp-action="DepartamentoPDF" class="btn_botoes">
-                                         <i class='bx bxs-file-pdf' style='color:#153f6c'></i>
-                                            Gerar PDF
-                                        </a>
-                                  
-                                    </p>
-                                        <div class="container d-table-cell p-3 ">
-                                            <div class="container small" >
-                                                <form asp-controller="Departamento" asp-action="Index" method="post">
-                                                    <input class="form-control" name="depbuscar" />
-                                                    <button type="submit" class="btn_botoes">Pesquisar</button>
+                                <p class="icons-lista">
+                                    <a asp-action="DepartamentoPDF" class="btn_botoes">
+                                        <i class='bx bxs-file-pdf' style='color:#153f6c'></i>
+                                        Gerar PDF
+                                    </a>
 
-                                                </form>
-                                            </div>
-                                        </div>
+                                </p>
+
+                                <div class="container d-table-cell p-3 ">
+                                    <div class="container small">
+                                        <form asp-controller="Departamento" asp-action="Index" method="post">
+                                            <input class="form-control" name="depbuscar" />
+                                            <button type="submit" class="btn_botoes">Pesquisar</button>
+
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </nav>
                     </div>
@@ -41,40 +43,40 @@
 
             <div class="card">
                 <div class="container mt-3">
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <h6>Departamento</h6>
-
-                                </th>
-                                <th>
-                                    <h6>Ramais</h6>
-
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach (var item in Model)
-                            {
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CodigoDepFkNavigation.Nome)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.NumeroRamal)
-                                    </td>
+                                    <th>
+                                        <h6>Departamento</h6>
+
+                                    </th>
+                                    <th>
+                                        <h6>Ramais</h6>
+
+                                    </th>
                                 </tr>
+                            </thead>
+                            <tbody>
 
-                            }
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CodigoDepFkNavigation.Nome)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.NumeroRamal)
+                                        </td>
+                                    </tr>
 
-                        </tbody>
-                    </table>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
 
         </div>
 </div>

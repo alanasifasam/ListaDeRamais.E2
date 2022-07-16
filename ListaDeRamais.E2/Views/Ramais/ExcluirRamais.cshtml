@@ -37,22 +37,22 @@
                             <h4>Ramais</h4>
                             <hr />
                             <dl class="row">
-                                <dt >
+                                <dt>
                                     <h5>Numero do Ramal</h5>
                                 </dt>
-                                <dd >
+                                <dd>
                                     @Html.DisplayFor(model => model.NumeroRamal)
                                 </dd>
-                                <dt >
+                                <dt>
                                     <h5>Senha</h5>
                                 </dt>
-                                <dd >
+                                <dd>
                                     @Html.DisplayFor(model => model.Senha)
                                 </dd>
-                                <dt >
+                                <dt>
                                     <h5>Endereço de IP</h5>
                                 </dt>
-                                <dd >
+                                <dd>
                                     @Html.DisplayFor(model => model.HostIp)
                                 </dd>
 
@@ -61,9 +61,15 @@
                             <form asp-action="ExcluirRamais">
                                 <h5>Você tem certeza que deseja excluir o ramal ?</h5>
                                 <input type="hidden" asp-for="Ramais" />
-                                <input type="submit" value="Excluir" class="btn_botoes" onclick="alertaExcluir()" /> |
+                                <input type="submit" value="Excluir" class="btn_botoes"  /> |
                                 <a class="btn_botoes" asp-action="Index">Voltar para lista</a>
                             </form>
+
+
+
+
+
+                    
 
 
 

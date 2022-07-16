@@ -23,6 +23,24 @@ namespace ListaDeRamais.E2.Controllers
             return View(await contextAux.ToListAsync());
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Index(string ProcurarEmRamais)
+        {
+            if (!string.IsNullOrEmpty(ProcurarEmRamais))
+            {
+
+                var listaNome = await _context.Ramais.Include(x => x.CodigoDepFkNavigation)
+                                    .Where(x =>x.NumeroRamal.ToString().Contains(ProcurarEmRamais)
+                                            ||x.CodigoDepFkNavigation.Nome.ToUpper().Contains(ProcurarEmRamais))
+                                    .ToListAsync();
+                return View(listaNome);
+            }
+            var contextAux = _context.Ramais.Include(x => x.CodigoDepFkNavigation)
+                                             .OrderBy(x => x.NumeroRamal);
+            return View(await contextAux.ToListAsync());
+
+        }
+
 
         [HttpGet]
         public IActionResult CriarRamais()
