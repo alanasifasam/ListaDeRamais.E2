@@ -30,6 +30,9 @@
                     <h6>Nome</h6>
                 </th>
                 <th>
+                    <h6>Sobrenome</h6>
+                </th>
+                <th>
                     <h6>Ramal</h6>
                 </th>
                 <th>
@@ -43,6 +46,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.CodigoFunFkNavigation.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodigoFunFkNavigation.Sobrenome)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CodigoRamalFkNavigation.NumeroRamal)

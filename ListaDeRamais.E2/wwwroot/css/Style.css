@@ -209,13 +209,13 @@ sidebar ul li a:hover{
 
 .toolipe{
     position:absolute;
-    top:65px;
-    left:122px;
+    top:70px;
+    left:90px;
     transform: translate(-50px,-50px);
     height:35px;
-    background-color:floralwhite;
+    background-color:white;
     border:none;
-    border-radius:12px;
+    border-radius:5px;
     outline:none;
     box-shadow: 0 5px 10px rgba(0,0,0,0.500);
     text-align:center;
@@ -223,13 +223,16 @@ sidebar ul li a:hover{
     line-height:35px;
     transition: 0;
     opacity:0;
-   display:none;
+    font-size:15px
+   
 }
 
 .sidebar ul li:hover .toolipe{
     transition:all 0.5s ease;
     top:70%;
     opacity:1;
+    
+   
 }
 
 /*sidebar active*/
@@ -261,6 +264,12 @@ sidebar ul li a:hover{
     display:flex;
 }
 
+.toolipe.active {
+    display: none;
+    opacity: 0;
+}
+
+
 .container.Cards.active{/*quando ativo ajustar cards*/
     left: 285px; 
     right: 100px;
@@ -269,15 +278,12 @@ sidebar ul li a:hover{
 
 .main.active {
     left: 66px
-    rigth: 300px;
+    right: 300px;
     width: calc(100% - 300px); 
    
 }
 
-.toolipe.active{
-    display:none;
-    opacity:0;
-}
+
 
 .btn_botoes {
     text-decoration: none;
@@ -292,6 +298,7 @@ sidebar ul li a:hover{
     font-size: 12px;
     cursor: pointer;
     margin-top:5px;
+    margin-left:10px;
 }
 
 .table {
@@ -312,7 +319,7 @@ sidebar ul li a:hover{
 }
 
 .card {
-    margin-top:25%;
+    margin-top:24%;
 }
 .col-6 {
 

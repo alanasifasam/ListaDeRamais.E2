@@ -11,7 +11,12 @@ btnMenu.addEventListener('click', () => {
     Cards.classList.toggle('active');
     main.classList.toggle('active');
     toolipe.classList.toggle('active');
+  
 });
+
+
+
+
 
 function alertaExcluir(){
     alert('Caso o ramal esteja vinculado com algum funcionário, o vínculo será excluído junto com o ramal.')
